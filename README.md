@@ -1,4 +1,4 @@
-# Simple-Arduino-debug
+# Simple-Arduino-debugger
 #### you can write your arduino code in Main_code.h 
 for normal use you only need to change:
 Debug_config.h
