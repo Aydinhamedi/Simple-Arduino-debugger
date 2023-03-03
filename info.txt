@@ -1,0 +1,4 @@
+memory usage{
+SRAM: 372 bytes
+Flash memory: 5160 bytes
+}

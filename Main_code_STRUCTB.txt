@@ -1,0 +1,30 @@
+//Write your code here>>>
+//DEFL
+#include "Arduino.h"
+#include "MCH.h"
+//include/define
+//Data
+//other
+//func
+//main code
+int setupDebug()
+{
+  BP1
+  //END----
+  return 1;
+}
+int loopDebug()
+{
+  //END----
+  return 151; //151 = loop
+}
+//DRTS-----------------
+void Debug_RTS1()
+{
+}
+void Debug_RTS2()
+{ 
+}
+void Debug_RTS3()
+{
+}
