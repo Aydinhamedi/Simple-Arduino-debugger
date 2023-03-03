@@ -6,3 +6,6 @@ and
 Main_code.h
 
 Warning loopDebug() only runs 5 times by defult you can change it in Debug_config.h
+## used librarys
+https://github.com/arduino-libraries/Arduino_DebugUtils<br />
+https://github.com/backupbrain/ArduinoBoardManager
