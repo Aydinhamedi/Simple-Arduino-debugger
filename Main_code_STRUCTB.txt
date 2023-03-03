@@ -1,6 +1,7 @@
 //Write your code here>>>
 //DEFL
 #include "Arduino.h"
+#include "Arduino_DebugUtils.h"
 #include "MCH.h"
 //include/define
 //Data
@@ -9,7 +10,7 @@
 //main code
 int setupDebug()
 {
-  BP1
+  ADU_I
   //END----
   return 1;
 }
