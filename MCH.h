@@ -5,6 +5,7 @@
   #include "Arduino_DebugUtils.h"
   #include "WString.h"
   #include "Arduino.h"
+  #include <EEPROM.h>
   #define MC_RT_T_START I_Past_time = millis(); Serial.println(F("\nMCI_RT_D begin{"));
   #define MC_RT_T_END I_RT_D = (millis() - I_Past_time) - 33; Serial.println("\nMCI_RT_D end: " + String(I_RT_D) + String("ms}"));
   #define UDVC(a) String(a)
@@ -15,12 +16,44 @@
   #ifdef Arduino_DebugUtils 
     #define ADU_I Debug.setDebugOutputStream(&Serial); Debug.setDebugLevel(Arduino_DebugUtils_MODE);  Debug.timestampOn(); 
   #endif
-  //dat
+//dat
   uint32_t I_Past_time;
   uint32_t I_RT_D;
-  //func
+//func
+int freeRam(void) {
+  extern int __heap_start, *__brkval; 
+  int v; 
+  return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval); 
+}
+void EEPROM_Clear()
+{
+  Serial.println(F("EEPROM_Clear:"));
+  for (uint16_t i = 0; i < EEPROM.length(); i++) 
+  {
+    EEPROM.write(i, NULL);
+  }
+  Serial.println(F("EEPROM_Clear end."));
+}
+bool freeRam_internal(unsigned long i = 0, bool a = SRAM_ERROR) 
+{
+  Serial.println(F("\n---------------------------"));
+  Serial.print(F("freeSram: "));
+  Serial.print(freeRam());
+  Serial.println(F(" byte"));
+  Serial.print(F("REC: "));
+  Serial.println(i);
+  if (freeRam() < SRAM_Limit && a == true)
+  {
+    Serial.println(F("!!!ERROR LOW SRAM!!!"));  
+    Serial.println(F("---------------------------"));
+    return true;
+  }
+  Serial.println(F("---------------------------"));
+  return false;
+}
   void DebugVal(String Name, DebugVal_VDT Val) 
   {
+    Serial.println(F("DebugVal:"));
     Serial.print(Name);
     Serial.print(F(": "));
     Serial.println(Val);
